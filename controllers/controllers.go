@@ -64,6 +64,11 @@ func DeleteTask(ID int) {
 	}
 
 	AllTasks = append(AllTasks[:index], AllTasks[index+1:]...)
+
+	for i := range AllTasks[index:] {
+		AllTasks[index+i].ID--
+	}
+
 	fmt.Printf("Task with ID %d deleted successfully.\n", ID)
 	SaveToFile()
 }
